@@ -1,0 +1,68 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">Shot analyser thing</h3>
+</div>
+
+<div class="jumbotron">
+    <div droppable>
+  <h1>Drop your raw KME data here</h1>
+  <p class="lead">
+    <img src="images/Target-audience_small.jpg" class="img-responsive" alt="target shooting"><br>
+    Then we will graph how you shot
+  </p>
+
+    </div>
+</div>
+
+<p>
+    Data from {{shoots.length}} shoots loaded.
+</p>
+
+<div ng-if="processing" class="row marketing">
+    <!-- This is where we show the "results" -->
+
+</div>
+
+
+<div ng-hide="processing" class="row marketing">
+
+  <div class="" ng-repeat="shoot in shoots">
+
+      <h4>{{$index + 1}}: <span ng-bind="shoot.filename"></span></h4>
+      <div class="row">
+          <div class="col-sm-12">
+              <shotplot data="shoot.data" size="5" color="green"></shotplot>
+          </div>
+      </div>
+      <div class="row">
+
+          <div class="col-sm-12">
+              <div ng-repeat="shot in shoot.data">
+                  <h4>{{shot.id}}</h4>
+                  <pre>{{shot.raw}}</pre>
+              </div>
+          </div>
+
+      </div>
+
+  </div>
+
+</div>
+<div class="row marketing">
+
+    <p>
+        <a class="btn btn-lg btn-success btn-block" ng-click="processShotData()">All done? Splendid! Time to get busy</a>
+
+    </p>
+    <p ng-show="download.show">
+        <a class="btn btn-lg btn-danger btn-block" ng-click="download()" download="results.zip">Download ZIP file of all images</a>
+    </p>
+
+</div>
+<div class="footer">
+  <p>Hardbyte Technology 2014 <a href="https://twitter.com/thorneynz">@thorneynz</a></p>
+</div>
