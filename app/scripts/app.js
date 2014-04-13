@@ -114,7 +114,7 @@ angular.module('TargetShootingApp', [
 
                     // Draw the target circles first
                     g.selectAll('circle.target')
-                        .data([5, 10, 20])
+                        .data([6, 10, 20])
                         .enter()
                         .append('circle')
                         .attr('class', 'target')
